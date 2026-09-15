@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Alert, Col, Container, Form, Row } from "react-bootstrap";
-import { orchids } from "../data/orchids";
+import { OrchidsData } from "../shared/OrchidsData";
 import OrchidCard from "./OrchidCard";
 function OrchidExplorer() {
     const [searchText, setSearchText] = useState("");
     const [specialOnly, setSpecialOnly] = useState(false);
     const normalizedText = searchText.trim().toLowerCase(); 
-    const visibleOrchids = orchids.filter((orchid) => {
+    const visibleOrchids = OrchidsData.filter((orchid) => {
         const matchesText =
             orchid.orchidName.toLowerCase().includes(normalizedText) ||
             orchid.category.toLowerCase().includes(normalizedText);
@@ -37,7 +37,7 @@ function OrchidExplorer() {
                 </Col>
             </Row>
             <p className="text-muted">
-                Showing {visibleOrchids.length} of {orchids.length} orchids
+                Showing {visibleOrchids.length} of {OrchidsData.length} orchids
             </p>
             {visibleOrchids.length === 0 ? (
                 <Alert variant="info">No orchid matches the current filters.</Alert>
