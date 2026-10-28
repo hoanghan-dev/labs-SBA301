@@ -1,9 +1,9 @@
 # FUNewsManagementSystem - ReactJS Administration Portal
 **Assignment 01 • SBA301 – Integrate Single Page Application with Spring Boot**
 
-* **Sinh viên thực hiện:** Võ Thành Đạt
+* **Sinh viên thực hiện:** Nguyễn Hoàng Hân
 * **Mã lớp:** SE1910
-* **Project Directory:** `VoThanhDat_SE1910`
+* **Project Directory:** `NguyenHoangHan_SE1910`
 * **Công nghệ:** ReactJS 19, Vite 8, Modern CSS (Design System Tokens, Responsive, Glassmorphism, Zero External Heavy UI Dependencies)
 
 ---
@@ -29,9 +29,9 @@ Hệ thống cung cấp giao diện quản trị trực quan, hiện đại, b�
 * **npm:** Phiên bản `>= 9.x`.
 
 ### 2.2 Các bước thực hiện
-1. **Mở terminal** tại thư mục gốc của project (`VoThanhDat_SE1910`):
+1. **Mở terminal** tại thư mục gốc của project (`NguyenHoangHan_SE1910`):
    ```bash
-   cd VoThanhDat_SE1910
+   cd NguyenHoangHan_SE1910
    ```
 2. **Cài đặt các gói phụ thuộc (Dependencies):**
    ```bash
@@ -66,7 +66,7 @@ Hệ thống cung cấp giao diện quản trị trực quan, hiện đại, b�
 
 | Mã ID | Yêu cầu nghiệp vụ | Bằng chứng mã nguồn / UI | Trạng thái |
 |---|---|---|---|
-| **R01** | Project ReactJS + Vite, đặt tên `VoThanhDat_SE1910` | `package.json`, cấu trúc thư mục, lệnh `npm run dev` | **PASS (100%)** |
+| **R01** | Project ReactJS + Vite, đặt tên `NguyenHoangHan_SE1910` | `package.json`, cấu trúc thư mục, lệnh `npm run dev` | **PASS (100%)** |
 | **R02** | Login page có form controlled input, validate | `src/components/auth/LoginPage.jsx` | **PASS (100%)** |
 | **R03** | Đăng nhập đúng `Admin/Admin` chuyển sang trang Admin | `App.jsx` (`currentUser` state & guard) | **PASS (100%)** |
 | **R04** | Logo hệ thống tạo bằng công cụ AI | `public/fu_news_logo.jpg`, `src/assets/fu_news_logo.jpg` | **PASS (100%)** |
@@ -84,7 +84,7 @@ Hệ thống cung cấp giao diện quản trị trực quan, hiện đại, b�
 ## 5. Cấu trúc mã nguồn (Project Architecture)
 
 ```text
-VoThanhDat_SE1910/
+NguyenHoangHan_SE1910/
 ├── public/
 │   ├── favicon.svg
 │   └── fu_news_logo.jpg          # Logo FU News tạo bằng AI
@@ -191,18 +191,18 @@ VoThanhDat_SE1910/
 ## 9. Hướng dẫn phỏng vấn đánh giá (Oral Defense & Interview Guide)
 
 ### Card A – Luồng đăng nhập (Authentication Flow)
-* **Vị trí code:** [`src/components/auth/LoginPage.jsx`](file:///d:/SBA301-LABS/LABS/VoThanhDat_SE1910/src/components/auth/LoginPage.jsx) & [`src/App.jsx`](file:///d:/SBA301-LABS/LABS/VoThanhDat_SE1910/src/App.jsx).
+* **Vị trí code:** [`src/components/auth/LoginPage.jsx`](file:///d:/SBA301-LABS/LABS/NguyenHoangHan_SE1910/src/components/auth/LoginPage.jsx) & [`src/App.jsx`](file:///d:/SBA301-LABS/LABS/NguyenHoangHan_SE1910/src/App.jsx).
 * **Cơ chế:** Form sử dụng controlled inputs với `useState` cho `username` và `password`. Khi submit, `handleSubmit` thực hiện `e.preventDefault()`, kiểm tra rỗng, đối chiếu với tài khoản `Admin / Admin` (hoặc mock users). Nếu đúng, hàm `onLogin(adminUser)` được kích hoạt, cập nhật state `currentUser` trong `App.jsx` và lưu vào `localStorage`, từ đó chuyển hướng giao diện từ `LoginPage` sang `AdminLayout`.
 
 ### Card B – Luồng Create & Update bằng Modal Dialog
-* **Vị trí code:** [`src/components/common/Modal.jsx`](file:///d:/SBA301-LABS/LABS/VoThanhDat_SE1910/src/components/common/Modal.jsx), [`src/components/categories/CategoryManagement.jsx`](file:///d:/SBA301-LABS/LABS/VoThanhDat_SE1910/src/components/categories/CategoryManagement.jsx).
+* **Vị trí code:** [`src/components/common/Modal.jsx`](file:///d:/SBA301-LABS/LABS/NguyenHoangHan_SE1910/src/components/common/Modal.jsx), [`src/components/categories/CategoryManagement.jsx`](file:///d:/SBA301-LABS/LABS/NguyenHoangHan_SE1910/src/components/categories/CategoryManagement.jsx).
 * **Cơ chế:** Quản lý bằng 2 state: `isModalOpen` (boolean) và `modalMode` (`create` hoặc `update`).
   * Khi bấm **Add New**: `modalMode = 'create'`, form reset về giá trị rỗng mặc định.
   * Khi bấm **Edit**: `modalMode = 'update'`, lấy dữ liệu dòng được chọn gán vào `formData` để hiển thị trên các input.
   * Khi bấm **Save/Submit**: Kiểm tra validation; nếu là create thì tạo id mới và thêm vào mảng bằng immutable update (`setCategories(prev => [newCat, ...prev])`); nếu là update thì thay thế bằng `prev.map(c => c.id === updatedCat.id ? updatedCat : c)`.
 
 ### Card C – Luồng Delete với Confirmation
-* **Vị trí code:** [`src/components/common/ConfirmDialog.jsx`](file:///d:/SBA301-LABS/LABS/VoThanhDat_SE1910/src/components/common/ConfirmDialog.jsx).
+* **Vị trí code:** [`src/components/common/ConfirmDialog.jsx`](file:///d:/SBA301-LABS/LABS/NguyenHoangHan_SE1910/src/components/common/ConfirmDialog.jsx).
 * **Cơ chế:** Khi nhấn nút thùng rác, lưu đối tượng cần xóa vào state `categoryToDelete` và bật `isConfirmOpen = true`. Nếu người dùng bấm Cancel, modal đóng và không thay đổi dữ liệu. Nếu bấm Confirm Delete, thực hiện immutable remove thông qua hàm `filter`: `prev.filter(item => item.id !== idToDelete)` rồi ghi xuống storage.
 
 ### Card D – Luồng Search và Filter không làm mất dữ liệu gốc
@@ -214,4 +214,4 @@ VoThanhDat_SE1910/
 ## 10. Bản tự xác nhận của sinh viên (Student Declaration)
 > *"Tôi xin cam đoan toàn bộ mã nguồn của đồ án này đã được tự kiểm tra, hoạt động ổn định và đáp ứng đầy đủ tất cả các yêu cầu của SBA301 Assignment 01. Tôi sẵn sàng giải thích cặn kẽ từng dòng lệnh, luồng dữ liệu, cũng như thực hiện các yêu cầu thay đổi (Transfer Task) trực tiếp trong buổi phỏng vấn bảo vệ."*
 >
-> **Sinh viên:** Võ Thành Đạt — Lớp: SE1910.
+> **Sinh viên:** Nguyễn Hoàng Hân — Lớp: SE1910.
